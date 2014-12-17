@@ -1,0 +1,33 @@
+<%= form_for @cource_detail, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :cource_name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :cource_name, :class => 'text_field' %>
+   <%= f.submit  'Add Syllabus',{:id=>'button_add_time',:type=>'button'}%>
+   </div>
+  </div>
+     <div id='result'></div>
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                cource_details_path, :class => 'btn' %>
+  </div>
+<% end %>
+  
+<script type="text/javascript">
+var nxt=0;
+ $('#button_add_time').on("click",function() {
+  nxt++;
+    $.ajax({
+    type: 'GET',
+    url: "<%= add_syllabus_cource_details_path%>",
+    data: { location_id: "Syllabus",ind:nxt }
+    }).done(function( msg ) {
+    $('#result').html(msg);
+}); 
+  });
+
+ $('#button_add_subject').on("click",function() {
+  alert("ds")
+ });
+</script>

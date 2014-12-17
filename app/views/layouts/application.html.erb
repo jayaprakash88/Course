@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MyBook</title>
+   <%= stylesheet_link_tag 'application', media: 'all',
+                                           'data-turbolinks-track' => true %>
+    
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <%if  current_user.blank?%>
+ <p class="notice"><font color="red"><%= notice %></p>
+       <p class="alert"><%= alert %></font></p>
+       <%end%>
+       <br/><br/>
+       <div class="container">
+       <div class="row">
+        <div class="span9"><%= yield %></div>
+        <div class="span3">
+        <%if  current_user%>
+
+  <%= link_to signout_path, class: 'btn btn-info pull-right' do %>
+  <i class="glyphicon glyphicon-plus"></i> Sign Out
+<% end %>
+<br/><br/>
+      <h2>About Us</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p> 
+      <%end%>       
+    </div>
+  </div>
+</div>
+</body>
+</html>

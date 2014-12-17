@@ -1,0 +1,24 @@
+
+<div class="controls">
+ <td>Syllabus Name</td>
+      <%= text_field :syllabus,:name, :class => 'text_field' ,:value=>@ind%>
+     
+	<%= submit_tag  'Add Subject',{:id=>'button_add_subject',:type=>'button'}%>
+    </div>
+    <br/>
+     <div id='subject'></div>
+   
+    
+    <script type="text/javascript">
+    nxt =0
+     $('#button_add_subject').on("click",function() {
+   nxt++;
+    $.ajax({
+    type: 'GET',
+    url: "<%= add_subject_cource_details_path%>",
+    data: { location_id: "Syllabus",ind:nxt }
+    }).done(function( msg ) {
+    $('#subject').html(msg);
+}); 
+ });
+    </script>
