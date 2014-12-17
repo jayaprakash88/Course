@@ -51,11 +51,11 @@ class CourceDetailsController < ApplicationController
   # POST /cource_details.json
   def create
     @cource_detail = CourceDetail.new(params[:cource_detail])
-    status = @cource_detail.save
+    status = @cource_detail.save!
     @syllabus= Syllabus.new(params[:syllabus].merge(:cource_detail_id => @cource_detail.id))
-    status = @syllabus.save
+    status = @syllabus.save!
     @chapter = Chapter.new(params[:chapter].merge(:syllabus_id=>@syllabus.id))
-    status = @chapter.save
+    status = @chapter.save!
     
     respond_to do |format|
       if status

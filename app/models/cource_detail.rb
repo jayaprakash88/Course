@@ -1,7 +1,7 @@
 class CourceDetail < ActiveRecord::Base
 	has_many :syllabuses
 	before_destroy :check_chapters
-    validates :name, :uniqueness => true,:presence=>true
+    validates :cource_name, :uniqueness => true,:presence=>true
 	def check_chapters
 		syllabuses =self.syllabuses
 		syllabuses.each do |each_syllabus|
